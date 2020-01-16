@@ -2,9 +2,8 @@ package main
 
 import (
 	"log"
-	"net/http"
 	"os"
-
+	"./handler/getIndex.go"
 	"github.com/gin-gonic/gin"
 	_ "github.com/heroku/x/hmetrics/onload"
 )
@@ -22,6 +21,8 @@ func main() {
 	router.Static("/static", "./static")
 
 	router.GET("/", handler.getIndex())
+	router.POST("/game", handler.gameGet())
+	//router.POST("/game", handler.getPost())
 
 	router.Run(":" + port)
 }
